@@ -1,13 +1,11 @@
+import { useEffect, useState } from "react";
+import ko from "knockout";
 import KnockoutContext from "../context/KnockoutContext";
 
 const KnockoutProvider = ({ children }) => {
-  const [ViewModel, setViewModel] = React.useState({});
+  const [ViewModel, setViewModel] = useState({});
 
-  /*
-    Toda vez que um elemento novo é adicionado a ViewModel
-    os bindings são refeitos
-  */
-  React.useEffect(() => {
+  useEffect(() => {
     ko.applyBindings(ViewModel, document.getElementById("ko-root"));
   }, []);
 
